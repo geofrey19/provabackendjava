@@ -1,6 +1,7 @@
 package br.com.prova.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class PedidoService {
 	}
 	
 	public Pedido findById(UUID id) {
-		Pedido pedido = repository.findById(id);
-		return pedido;
+		Optional<Pedido> pedido = repository.findById(id);
+		return pedido.get();
 		
 	}
 }
