@@ -33,4 +33,17 @@ public class ProdutoServicoService {
 	public void delete(UUID id) {
 		repository.deleteById(id);
 	}
+	
+	public ProdutoServico update(UUID id, ProdutoServico prodserv) {
+		ProdutoServico entidade  = repository.saveAndFlush(prodserv);
+		updateData(entidade,prodserv);
+		return repository.save(entidade);
+		
+	}
+
+	private void updateData(ProdutoServico entidade, ProdutoServico prodserv) {
+		entidade.setNome(prodserv.getNome());
+		entidade.setPreco(prodserv.getPreco());
+		
+	}
 }
