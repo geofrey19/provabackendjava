@@ -29,4 +29,8 @@ public class ProdutoServicoService {
 	public ProdutoServico insert(ProdutoServico prodserv) {
 		return repository.save(prodserv);
 	}
+	
+	public void delete(UUID id) {
+		repository.deleteById(id);
+	}
 }
