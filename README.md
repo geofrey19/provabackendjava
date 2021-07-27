@@ -1,7 +1,7 @@
 # provabackendjava
  prova de backend java
  
- Usando o Postman:
+ Para os testes do funcionamento das rotas utilizei o Postman:
  
 Cadastrando um Produto/Serviço:
 
