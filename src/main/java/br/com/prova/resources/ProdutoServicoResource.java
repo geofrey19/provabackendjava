@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -26,7 +27,8 @@ public class ProdutoServicoResource {
 	@Autowired
 	public ProdutoServicoService service;
 	
-	@GetMapping
+	@GetMapping(value = "listatodos")
+	@ResponseBody
 	public ResponseEntity<List<ProdutoServico>> findAll(){
 		List<ProdutoServico> list = service.findAll();
 		return ResponseEntity.ok().body(list);
@@ -38,7 +40,7 @@ public class ProdutoServicoResource {
 		return ResponseEntity.ok().body(pedido);
 	}
 	
-	@PostMapping
+	@PostMapping(value = "/salva")
 	public ResponseEntity<ProdutoServico> insert(@RequestBody ProdutoServico prodserv){
 		prodserv = service.insert(prodserv);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(prodserv.getId()).toUri();

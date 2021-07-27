@@ -1,5 +1,6 @@
 package br.com.prova.model.enums;
 
+/*No cadastro de produto/serviço deverá ter uma indicação para diferenciar um produto de um serviço*/
 public enum ProdutoServicoTipo {
 
 	PRODUTO(0),

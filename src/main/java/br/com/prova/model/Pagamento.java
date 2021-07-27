@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.FutureOrPresent;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,13 +21,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+	/*Todos as entidades deverão ter um ID único do tipo UUID gerado automaticamente*/
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "id", updatable = false, nullable = false)
 	private UUID id;
 	
+	@FutureOrPresent
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
 	private  Instant momento;
 	

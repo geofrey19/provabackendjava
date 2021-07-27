@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +19,12 @@ public class PedidoItem implements Serializable {
 	@EmbeddedId
 	private PedidoItemPK id = new PedidoItemPK();
 	
+	@NotNull
+	@DecimalMin(value = "1")
 	private Integer quantidade;
+	
+	@NotNull
+	@DecimalMin(value = "0.1")
 	private Double preco;
 	
 	public PedidoItem() {
@@ -68,7 +75,7 @@ public class PedidoItem implements Serializable {
 	public Double getSubTotal() {
 		return preco * quantidade;
 	}
-
+		
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
